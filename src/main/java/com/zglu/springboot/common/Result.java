@@ -16,7 +16,7 @@ public class Result<T> {
 
     private Result(ResultCode t, T e) {
         code = t.code();
-        msg = t.message();
+        msg = t.msg();
         data = e;
     }
 
@@ -24,7 +24,7 @@ public class Result<T> {
         return new Result(e);
     }
 
-    public static Result fail(Exception e) {
+    public static Result exception(Exception e) {
         return new Result<>(ResultCode.EXCEPTION, e.getMessage());
     }
 }

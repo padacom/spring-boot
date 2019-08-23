@@ -12,6 +12,6 @@ public class CustomException extends RuntimeException {
 
     public CustomException(ResultCode r) {
         code = r.code();
-        msg = r.message();
+        msg = r.msg();
     }
 }

@@ -3,7 +3,7 @@ package com.zglu.springboot.common;
 public enum ResultCode {
 
     EXCEPTION(-1, "服务器异常"),
-    ERROR(0, "失败"),
+    FAIL(0, "失败"),
 
     //通用
     DATA_NOT_EXIST(10001, "数据不存在"),
@@ -21,18 +21,18 @@ public enum ResultCode {
     SUCCESS(1, "成功");
 
     private Integer code;
-    private String message;
+    private String msg;
 
-    ResultCode(Integer code, String message) {
+    ResultCode(Integer code, String msg) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
     }
 
     public Integer code() {
         return code;
     }
 
-    public String message() {
-        return message;
+    public String msg() {
+        return msg;
     }
 }

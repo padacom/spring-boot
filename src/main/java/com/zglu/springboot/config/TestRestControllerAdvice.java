@@ -17,6 +17,6 @@ public class TestRestControllerAdvice {
     //拦截未知异常
     @ExceptionHandler(Exception.class)
     public Result unknownException(Exception e) {
-        return Result.fail(e);
+        return Result.exception(e);
     }
 }
