@@ -26,7 +26,7 @@ class User {
     @CreatedBy
     private Integer createdBy;
     @LastModifiedDate
-    private String modifiedDate;
+    private Date modifiedDate;
     @LastModifiedBy
     private Integer modifiedBy;
     private boolean enable;
