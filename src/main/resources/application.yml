@@ -12,3 +12,7 @@ spring:
     host: 172.16.50.199
     port: 6379
     database: 15
+
+  data:
+    solr:
+      host: http://172.16.50.199:8983/solr
