@@ -1,4 +1,4 @@
-package com.zglu.springboot.solr;
+package com.zglu.springboot.api.solr;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

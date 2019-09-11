@@ -1,16 +1,15 @@
-package com.zglu.springboot.controller;
+package com.zglu.springboot.view;
 
 import com.zglu.springboot.common.CustomException;
 import com.zglu.springboot.common.ResultCode;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class TestController {
 
     @GetMapping("/test")
-    public String test(Model model) {
+    public String test() {
         return "test";
     }
 
@@ -21,6 +20,6 @@ public class TestController {
 
     @GetMapping("/2")
     public String test2() {
-        throw new RuntimeException("未知异常");
+        throw new RuntimeException();
     }
 }

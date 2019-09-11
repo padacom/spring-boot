@@ -20,19 +20,19 @@ public enum ResultCode {
 
     SUCCESS(1, "成功");
 
-    private Integer code;
-    private String msg;
+    private int status;
+    private String message;
 
-    ResultCode(Integer code, String msg) {
-        this.code = code;
-        this.msg = msg;
+    ResultCode(int status, String message) {
+        this.status = status;
+        this.message = message;
     }
 
-    public Integer code() {
-        return code;
+    public int status() {
+        return status;
     }
 
-    public String msg() {
-        return msg;
+    public String message() {
+        return message;
     }
 }

@@ -23,6 +23,7 @@ public class RedisConfig {
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         ObjectMapper om = new ObjectMapper();
         om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        om.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false);
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
 

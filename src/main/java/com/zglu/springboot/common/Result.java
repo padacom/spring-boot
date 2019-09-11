@@ -2,21 +2,29 @@ package com.zglu.springboot.common;
 
 import lombok.Data;
 
+import java.util.Map;
+
 @Data
 public class Result<T> {
 
-    private int code;
-    private String msg;
+    private int status;
+    private String message;
     private T data;
 
     private Result(CustomException e) {
-        code = e.getCode();
-        msg = e.getMsg();
+        status = e.getStatus();
+        message = e.getMessage();
     }
 
-    private Result(ResultCode t, T e) {
-        code = t.code();
-        msg = t.msg();
+    private Result(ResultCode r, T e) {
+        status = r.status();
+        message = r.message();
+        data = e;
+    }
+
+    private Result(Map<String, Object> m, T e) {
+        status = Integer.parseInt(m.get("status") + "");
+        message = m.get("error") + "";
         data = e;
     }
 
@@ -26,5 +34,9 @@ public class Result<T> {
 
     public static Result exception(Exception e) {
         return new Result<>(ResultCode.EXCEPTION, e.getMessage());
+    }
+
+    public static Result exception(Map<String, Object> e) {
+        return new Result<>(e, e);
     }
 }

@@ -1,6 +1,5 @@
-package com.zglu.springboot.controller;
+package com.zglu.springboot.api;
 
-import com.alibaba.fastjson.JSON;
 import com.zglu.springboot.common.CustomException;
 import com.zglu.springboot.common.ResultCode;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,26 +22,26 @@ public class TestRestController {
 
     @GetMapping("/api/2")
     public String test2() {
-        throw new RuntimeException("未知异常");
+        throw new RuntimeException();
     }
 
     @GetMapping("/api/vo1")
-    public TestBaseVo test1Vo() {
+    public Test1Vo test1Vo() {
         return new Test1Vo();
     }
 
     @GetMapping("/api/vo2")
-    public TestBaseVo test2Vo() {
+    public Test2Vo test2Vo() {
         return new Test2Vo();
     }
 
-    @GetMapping("/api/baseVo")
+    @GetMapping("/api/vo")
     public TestBaseVo testBaseVo() {
         return new TestBaseVo();
     }
 
     @PostMapping("/api/vo")
-    public Test1Vo testVo(@RequestBody String json) {
-        return JSON.parseObject(json, Test1Vo.class);
+    public TestBaseVo testVo(@RequestBody TestBaseVo vo) {
+        return vo;
     }
 }

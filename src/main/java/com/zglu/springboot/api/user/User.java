@@ -1,4 +1,4 @@
-package com.zglu.springboot.user;
+package com.zglu.springboot.api.user;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;

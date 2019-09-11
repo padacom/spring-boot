@@ -1,4 +1,4 @@
-package com.zglu.springboot.controller;
+package com.zglu.springboot.api;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

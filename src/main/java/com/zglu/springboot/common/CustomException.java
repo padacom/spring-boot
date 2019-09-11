@@ -1,17 +1,20 @@
 package com.zglu.springboot.common;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class CustomException extends RuntimeException {
 
-    private int code;
-    private String msg;
+    private int status;
+    private String message;
 
     public CustomException(ResultCode r) {
-        code = r.code();
-        msg = r.msg();
+        super();
+        status = r.status();
+        message = r.message();
     }
 }

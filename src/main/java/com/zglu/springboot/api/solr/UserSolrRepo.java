@@ -1,4 +1,4 @@
-package com.zglu.springboot.solr;
+package com.zglu.springboot.api.solr;
 
 import org.springframework.data.solr.repository.SolrCrudRepository;
 

@@ -1,19 +1,15 @@
-package com.zglu.springboot.user;
+package com.zglu.springboot.api.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
     private final UserRepo repo;
-
-    @Autowired
-    public UserService(UserRepo userRepo) {
-        this.repo = userRepo;
-    }
 
     @Cacheable(value = "user",key = "'id:'+#id")
     public User get(int id) {

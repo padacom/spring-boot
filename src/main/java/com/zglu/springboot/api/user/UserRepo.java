@@ -1,4 +1,4 @@
-package com.zglu.springboot.user;
+package com.zglu.springboot.api.user;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
