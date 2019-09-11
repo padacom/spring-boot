@@ -26,13 +26,23 @@ public class TestRestController {
         throw new RuntimeException("未知异常");
     }
 
-    @GetMapping("/api/vo")
-    public TestVo testVo() {
-        return new TestVo();
+    @GetMapping("/api/vo1")
+    public TestBaseVo test1Vo() {
+        return new Test1Vo();
+    }
+
+    @GetMapping("/api/vo2")
+    public TestBaseVo test2Vo() {
+        return new Test2Vo();
+    }
+
+    @GetMapping("/api/baseVo")
+    public TestBaseVo testBaseVo() {
+        return new TestBaseVo();
     }
 
     @PostMapping("/api/vo")
-    public TestVo testVo(@RequestBody String json) {
-        return JSON.parseObject(json,TestVo.class);
+    public Test1Vo testVo(@RequestBody String json) {
+        return JSON.parseObject(json, Test1Vo.class);
     }
 }

@@ -5,6 +5,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class TestVo extends TestBaseVo {
+class Test1Vo extends TestBaseVo {
     private String phone;
 }
