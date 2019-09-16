@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Log
@@ -24,10 +25,13 @@ public class MQRunner implements ApplicationRunner {
         while (true) {
             try {
                 List<Message> messageList = mqConsumer.consumeMessage(3, 3);
+                List<String> handles = new ArrayList<>();
                 if (messageList != null) {
                     messageList.forEach(m -> {
                         log.info(m.toString());
+                        handles.add(m.getReceiptHandle());
                     });
+                    mqConsumer.ackMessage(handles);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
