@@ -21,3 +21,11 @@ spring:
 
   thymeleaf:
     cache: false
+
+custom:
+  mq:
+    url: http://1505716954562220.mqrest.cn-qingdao-public.aliyuncs.com
+    id: LTAIfcYYTpu5nhlg
+    key: WJpM378JiEfyQOJ98rc4OHKnvwFLpE
+    topic: JIUXIAOER-DEFAULT-DEV
+    groupId: GID_JIUXIAOER_DEFAULT_DEV
