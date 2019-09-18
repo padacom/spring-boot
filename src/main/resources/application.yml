@@ -7,6 +7,7 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     show-sql: true
 
@@ -18,6 +19,11 @@ spring:
   data:
     solr:
       host: http://172.16.50.199:8983/solr
+
+    mongodb:
+      host: localhost
+      port: 27017
+      database: zglu
 
   thymeleaf:
     cache: false

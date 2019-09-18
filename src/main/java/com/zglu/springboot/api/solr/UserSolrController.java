@@ -1,10 +1,7 @@
 package com.zglu.springboot.api.solr;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -18,7 +15,7 @@ public class UserSolrController {
     }
 
     @PostMapping("/user-solr")
-    public UserSolr get(UserSolr user) {
+    public UserSolr get(@RequestBody UserSolr user) {
         return service.add(user);
     }
 }

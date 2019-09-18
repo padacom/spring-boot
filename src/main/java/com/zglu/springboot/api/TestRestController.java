@@ -45,18 +45,13 @@ public class TestRestController {
         return new Test1Vo();
     }
 
-    @GetMapping("/api/vo2")
-    public Test2Vo test2Vo() {
-        return new Test2Vo();
-    }
-
     @GetMapping("/api/vo")
     public TestBaseVo testBaseVo() {
         return new TestBaseVo();
     }
 
     @PostMapping("/api/vo")
-    public TestBaseVo testVo(@RequestBody TestBaseVo vo) {
+    public TestBaseVo testBaseVo(@RequestBody TestBaseVo vo) {
         return vo;
     }
 
