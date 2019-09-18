@@ -22,6 +22,15 @@ spring:
   thymeleaf:
     cache: false
 
+  mail:
+    host: smtp.qq.com
+    username: 385861131@qq.com
+    password: xnfveixvpuqicbea
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+
 custom:
   mq:
     url: http://1505716954562220.mqrest.cn-qingdao-public.aliyuncs.com

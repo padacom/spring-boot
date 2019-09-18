@@ -6,6 +6,8 @@ import com.zglu.springboot.common.CustomException;
 import com.zglu.springboot.common.ResultCode;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 public class TestRestController {
 
     private MQProducer mqProducer;
+    private JavaMailSender javaMailSender;
 
     @GetMapping("/api/test")
     public String test() {
@@ -61,5 +64,16 @@ public class TestRestController {
         msg.setMessageTag("test");
         msg.setMessageBody("test");
         return mqProducer.publishMessage(msg).toString();
+    }
+
+    @GetMapping("/api/mail")
+    public String mail() {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("385861131@qq.com");
+        message.setTo("385861131@qq.com");
+        message.setSubject("test");
+        message.setText("test");
+        javaMailSender.send(message);
+        return "ok";
     }
 }
