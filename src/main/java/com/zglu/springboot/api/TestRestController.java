@@ -6,6 +6,7 @@ import com.zglu.springboot.common.CustomException;
 import com.zglu.springboot.common.ResultCode;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
+import org.quartz.*;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class TestRestController {
 
     private MQProducer mqProducer;
     private JavaMailSender javaMailSender;
+    private Scheduler scheduler;
 
     @GetMapping("/api/test")
     public String test() {
@@ -74,6 +76,20 @@ public class TestRestController {
         message.setSubject("test");
         message.setText("test");
         javaMailSender.send(message);
+        return "ok";
+    }
+
+    @GetMapping("/api/job")
+    public String job() throws SchedulerException {
+        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("*/10 * * * * ?");
+        TriggerKey triggerKey = TriggerKey.triggerKey("testJob");
+        CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+        trigger = trigger.getTriggerBuilder()
+                .withIdentity(triggerKey)
+                .withSchedule(scheduleBuilder)
+                .build();
+        //重启触发器
+        scheduler.rescheduleJob(triggerKey, trigger);
         return "ok";
     }
 }
