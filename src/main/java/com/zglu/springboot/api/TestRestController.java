@@ -42,12 +42,16 @@ public class TestRestController {
 
     @GetMapping("/api/vo1")
     public Test1Vo test1Vo() {
-        return new Test1Vo();
+        Test1Vo test1Vo = new Test1Vo();
+        test1Vo.set("test");
+        return test1Vo;
     }
 
     @GetMapping("/api/vo")
     public TestBaseVo testBaseVo() {
-        return new TestBaseVo();
+        TestBaseVo testBaseVo = new TestBaseVo();
+        testBaseVo.set("test");
+        return testBaseVo;
     }
 
     @PostMapping("/api/vo")

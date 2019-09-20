@@ -6,4 +6,8 @@ import lombok.Data;
 class TestBaseVo {
     private String id;
     private String name;
+
+    public void set(String s) {
+        name = s;
+    }
 }
