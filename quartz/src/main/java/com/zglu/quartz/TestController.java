@@ -24,4 +24,16 @@ public class TestController {
         scheduler.rescheduleJob(triggerKey, trigger);
         return "将定时器设定为10秒";
     }
+
+    @GetMapping("/start")
+    public String start() throws SchedulerException {
+        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("*/10 * * * * ?");
+        JobDetail jobDetail = JobBuilder.newJob(TestJob.class).withIdentity("testJob").storeDurably().build();
+        Trigger trigger = TriggerBuilder.newTrigger().forJob(jobDetail)
+                .withIdentity("startJob")
+                .withSchedule(scheduleBuilder)
+                .build();
+        scheduler.scheduleJob(trigger);
+        return "启动新定时器";
+    }
 }
