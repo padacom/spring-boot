@@ -12,7 +12,7 @@ public class UserSolrService {
     private final UserSolrRepo userSolrRepo;
 
     UserSolr get(int id) {
-        return userSolrRepo.findById(id).orElse(null);
+        return userSolrRepo.findById(id).orElse(new UserSolr());
     }
 
     UserSolr add(UserSolr userSolr) {

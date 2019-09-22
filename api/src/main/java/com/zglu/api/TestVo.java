@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-class Test1Vo extends TestBaseVo {
+class TestVo extends TestBaseVo {
     private String phone;
 
     public void set(String s) {

@@ -18,7 +18,7 @@ public class UserService {
     @Cacheable(value = "user", key = "'id:'+#id")
     public User get(int id) {
         log.info("db");
-        return userRepo.findById(id).orElse(null);
+        return userRepo.findById(id).orElse(new User());
     }
 
     @CacheEvict(value = "user", allEntries = true)
