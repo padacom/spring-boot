@@ -1,4 +1,4 @@
-package com.zglu.errorview;
+package com.zglu.therror.view;
 
 import com.zglu.common.CustomException;
 import com.zglu.common.Result;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-@ControllerAdvice("com.zglu.springboot.view")
+@ControllerAdvice("com.zglu.errorview.view")
 public class TestControllerAdvice {
 
     //统一为页面配置model

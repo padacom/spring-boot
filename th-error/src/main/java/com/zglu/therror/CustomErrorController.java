@@ -1,4 +1,4 @@
-package com.zglu.errorview;
+package com.zglu.therror;
 
 import com.zglu.common.Result;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class CustomErrorController implements ErrorController {
         return "error";
     }
 
-    //页面渲染时，拦截非控制器抛出异常
+    //页面加载时，拦截非控制器抛出异常
     @RequestMapping(value = "error", produces = "text/html")
     public String error(HttpServletRequest request, Model model) {
         Map<String, Object> e = getErrorAttributes(request, false);
