@@ -1,0 +1,4 @@
+spring:
+  data:
+    solr:
+      host: http://172.16.50.199:8983/solr

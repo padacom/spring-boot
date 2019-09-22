@@ -1,0 +1,9 @@
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 385861131@qq.com
+    password: xnfveixvpuqicbea
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true

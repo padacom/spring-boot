@@ -1,0 +1,8 @@
+spring:
+  rsocket:
+    server:
+      transport: tcp
+      port: 7000
+
+  profiles:
+    active: mongo
