@@ -5,7 +5,7 @@ import com.zglu.common.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice("com.zglu.errorview.api")
+@RestControllerAdvice("com.zglu.therror.api")
 public class TestRestControllerAdvice {
 
     //拦截控制器抛出业务异常

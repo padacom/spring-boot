@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-@ControllerAdvice("com.zglu.errorview.view")
+@ControllerAdvice("com.zglu.therror.view")
 public class TestControllerAdvice {
 
     //统一为页面配置model
