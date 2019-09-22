@@ -14,9 +14,8 @@
         <module>quartz</module>
         <module>redis</module>
         <module>mail</module>
-        <module>error-view</module>
+        <module>th-error</module>
         <module>api</module>
-        <module>thymeleaf</module>
         <module>web-flux</module>
     </modules>
     <parent>
