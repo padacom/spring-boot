@@ -111,7 +111,7 @@ public class TestController {
     @GetMapping("/redis-template")
     public String redisTemplate() {
         String v = (String) redisTemplate.opsForValue().get("1");
-        redisTemplate.opsForValue().set("1", 1);
+        redisTemplate.opsForValue().set("1", "1");
         return v;
     }
 
