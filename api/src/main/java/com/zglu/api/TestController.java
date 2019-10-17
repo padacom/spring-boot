@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.aliyun.mq.http.MQProducer;
 import com.aliyun.mq.http.model.TopicMessage;
 import com.zglu.mysqldao.User;
+import com.zglu.mysqldao.UserRoleVo;
 import com.zglu.mysqldao.UserVo;
 import com.zglu.solrdao.UserSolr;
 import lombok.AllArgsConstructor;
@@ -83,6 +84,21 @@ public class TestController {
     @PostMapping("/user-solr")
     public UserSolr userSolr(@RequestBody UserSolr user) {
         return userSolrService.add(user);
+    }
+
+    @GetMapping("/user-role/{id}")
+    public List<UserRoleVo> userRole(@PathVariable int id) {
+        return userService.userRole(id);
+    }
+
+    @GetMapping("/user-role-hql/{id}")
+    public List<UserRoleVo> userRoleHql(@PathVariable int id) {
+        return userService.userRoleHql(id);
+    }
+
+    @GetMapping("/user-vo-hql/{id}")
+    public List<UserVo> findVoById(@PathVariable int id) {
+        return userService.findVoById(id);
     }
 
     //测试修改list内元素，修改的是元素本身，而不是容器内元素
