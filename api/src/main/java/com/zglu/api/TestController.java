@@ -9,6 +9,8 @@ import com.zglu.mysqldao.UserVo;
 import com.zglu.solrdao.UserSolr;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Log
@@ -28,6 +31,7 @@ public class TestController {
     private final UserService userService;
     private final UserSolrService userSolrService;
     private final RedisTemplate<String, Object> redisTemplate;
+    private final RedissonClient redissonClient;
 
     @GetMapping("/vo")
     public TestBaseVo vo() {
@@ -113,6 +117,16 @@ public class TestController {
         String v = (String) redisTemplate.opsForValue().get("1");
         redisTemplate.opsForValue().set("1", "1");
         return v;
+    }
+
+    @GetMapping("/redisson/{id}/{s}")
+    public String redisson(@PathVariable String id, @PathVariable int s) throws InterruptedException {
+        RLock lock = redissonClient.getLock(id);
+        lock.lock(30, TimeUnit.SECONDS);
+        System.out.println("执行了");
+        Thread.sleep(s * 1000);
+        lock.unlock();
+        return "执行了";
     }
 
     //测试修改list内元素，修改的是元素本身，而不是容器内元素
