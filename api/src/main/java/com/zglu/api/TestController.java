@@ -1,8 +1,10 @@
 package com.zglu.api;
 
+import com.alibaba.fastjson.JSON;
 import com.aliyun.mq.http.MQProducer;
 import com.aliyun.mq.http.model.TopicMessage;
 import com.zglu.mysqldao.User;
+import com.zglu.mysqldao.UserVo;
 import com.zglu.solrdao.UserSolr;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
@@ -11,6 +13,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Log
 @RestController
@@ -60,6 +64,12 @@ public class TestController {
         return userService.get(id);
     }
 
+    //测试json解析时，不为基础属性赋值是否报错
+    @GetMapping("/user-vo/{id}")
+    public UserVo userVo(@PathVariable int id) {
+        return JSON.parseObject(JSON.toJSONString(userService.get(id)), UserVo.class);
+    }
+
     @PostMapping("/user")
     public User user(@RequestBody User user) {
         return userService.add(user);
@@ -73,5 +83,22 @@ public class TestController {
     @PostMapping("/user-solr")
     public UserSolr userSolr(@RequestBody UserSolr user) {
         return userSolrService.add(user);
+    }
+
+    //测试修改list内元素，修改的是元素本身，而不是容器内元素
+    @GetMapping("/list-test")
+    public void listTest() {
+        List<UserVo> list = new ArrayList<>();
+        UserVo userVo = new UserVo();
+        userVo.setCreatedBy(10);
+        list.add(userVo);
+        List<UserVo> a = list.stream().filter(m -> m.getCreatedBy() == 10).collect(Collectors.toList());
+        a.forEach(m -> m.setCreatedBy(11));
+        System.out.println(a);
+        System.out.println(list);
+    }
+
+    public static void main(String[] args) {
+
     }
 }
