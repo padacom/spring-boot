@@ -9,6 +9,7 @@ import com.zglu.mysqldao.UserVo;
 import com.zglu.solrdao.UserSolr;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class TestController {
     private final JavaMailSender javaMailSender;
     private final UserService userService;
     private final UserSolrService userSolrService;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     @GetMapping("/vo")
     public TestBaseVo vo() {
@@ -104,6 +106,13 @@ public class TestController {
     @GetMapping("/user-update")
     public int update() {
         return userService.update();
+    }
+
+    @GetMapping("/redis-template")
+    public String redisTemplate() {
+        String v = (String) redisTemplate.opsForValue().get("1");
+        redisTemplate.opsForValue().set("1", 1);
+        return v;
     }
 
     //测试修改list内元素，修改的是元素本身，而不是容器内元素
