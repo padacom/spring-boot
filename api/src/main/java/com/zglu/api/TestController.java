@@ -101,6 +101,11 @@ public class TestController {
         return userService.findVoById(id);
     }
 
+    @GetMapping("/user-update")
+    public int update() {
+        return userService.update();
+    }
+
     //测试修改list内元素，修改的是元素本身，而不是容器内元素
     @GetMapping("/list-test")
     public void listTest() {

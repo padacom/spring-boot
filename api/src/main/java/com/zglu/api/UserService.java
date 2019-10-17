@@ -39,11 +39,14 @@ public class UserService {
     }
 
     public List<UserRoleVo> userRoleHql(int id) {
-        List o = userRepo.findUserRoleVoListForHqlById(id);
-        return JSON.parseArray(JSON.toJSONString(o), UserRoleVo.class);
+        return userRepo.findUserRoleVoListForHqlById(id);
     }
 
     public List<UserVo> findVoById(int id) {
         return userRepo.findVoById(id);
+    }
+
+    public int update() {
+        return userRepo.update();
     }
 }
