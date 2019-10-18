@@ -15,19 +15,22 @@ public interface UserRepo extends PagingAndSortingRepository<User, Integer> {
 
     //原生sql关联查询
     @Query(nativeQuery = true,
-            value = "select u.id,u.name,r.name roleName from user u " +
+            value = "select u.id,u.name,r.name roleName " +
+                    "from user u " +
                     "left join (user_role ur join role r on ur.role_id=r.id) on u.id=ur.user_id " +
                     "where u.id=:id")
     List<Map> findUserRoleVoListById(@Param("id") int id);
 
     //hql关联查询
-    @Query(value = "select new com.zglu.mysqldao.UserRoleVo(u,ur) from User u " +
+    @Query(value = "select new com.zglu.mysqldao.UserRoleVo(u,ur) " +
+            "from User u " +
             "left join com.zglu.mysqldao.UserRole ur on ur.userId=u.id " +
             "where u.id=:id")
     List<UserRoleVo> findUserRoleVoListForHqlById(@Param("id") int id);
 
     //hql查询vo
-    @Query(value = "select u from User u " +
+    @Query(value = "select u " +
+            "from User u " +
             "where u.id=:id")
     List<UserVo> findVoById(int id);
 
@@ -35,6 +38,8 @@ public interface UserRepo extends PagingAndSortingRepository<User, Integer> {
     @Modifying
     @Transactional
     @Query(nativeQuery = true,
-            value = "update user set enable=1 where enable=0")
+            value = "update user " +
+                    "set enable=1 " +
+                    "where enable=0")
     int update();
 }
