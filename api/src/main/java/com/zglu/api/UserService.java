@@ -19,7 +19,7 @@ public class UserService {
     private final UserRepo userRepo;
     private final RoleService service;
 
-    @Cacheable(value = "user", key = "'id:'+#id")
+    @Cacheable(cacheManager = "cacheManager", value = "user", key = "'id:'+#id")
     public User get(int id) {
         log.info("db");
         return userRepo.findById(id).orElse(new User());
