@@ -24,7 +24,7 @@ public class SwaggerConfig {
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("API")
-                .description("接口文档")
+                .description("接口文档（http://localhost:8080/swagger-ui.html）")
                 .version("1")
                 .build();
     }
