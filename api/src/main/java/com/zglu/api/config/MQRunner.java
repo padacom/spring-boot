@@ -1,7 +1,7 @@
 package com.zglu.api.config;
 
-import com.aliyun.mq.http.MQConsumer;
-import com.aliyun.mq.http.model.Message;
+//import com.aliyun.mq.http.MQConsumer;
+//import com.aliyun.mq.http.model.Message;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.boot.ApplicationArguments;
@@ -16,26 +16,26 @@ import java.util.List;
 @AllArgsConstructor
 public class MQRunner implements ApplicationRunner {
 
-    private MQConsumer mqConsumer;
+//    private MQConsumer mqConsumer;
 
     @Override
     @SuppressWarnings("InfiniteLoopStatement")
     public void run(ApplicationArguments args) {
         log.info("Started MQRunner");
-        while (true) {
-            try {
-                List<Message> messageList = mqConsumer.consumeMessage(3, 3);
-                List<String> handles = new ArrayList<>();
-                if (messageList != null) {
-                    messageList.forEach(m -> {
-                        log.info(m.toString());
-                        handles.add(m.getReceiptHandle());
-                    });
-                    mqConsumer.ackMessage(handles);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        while (true) {
+//            try {
+//                List<Message> messageList = mqConsumer.consumeMessage(3, 3);
+//                List<String> handles = new ArrayList<>();
+//                if (messageList != null) {
+//                    messageList.forEach(m -> {
+//                        log.info(m.toString());
+//                        handles.add(m.getReceiptHandle());
+//                    });
+//                    mqConsumer.ackMessage(handles);
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 }

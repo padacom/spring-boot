@@ -1,8 +1,8 @@
 package com.zglu.api;
 
 import com.alibaba.fastjson.JSON;
-import com.aliyun.mq.http.MQProducer;
-import com.aliyun.mq.http.model.TopicMessage;
+//import com.aliyun.mq.http.MQProducer;
+//import com.aliyun.mq.http.model.TopicMessage;
 import com.zglu.mysqldao.User;
 import com.zglu.mysqldao.UserRoleVo;
 import com.zglu.mysqldao.UserVo;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class TestController {
 
-    private final MQProducer mqProducer;
+//    private final MQProducer mqProducer;
     private final JavaMailSender javaMailSender;
     private final UserService userService;
     private final UserSolrService userSolrService;
@@ -47,13 +47,13 @@ public class TestController {
         return testVo;
     }
 
-    @GetMapping("/mq")
-    public String mq() throws UnsupportedEncodingException {
-        TopicMessage msg = new TopicMessage();
-        msg.setMessageTag("test");
-        msg.setMessageBody("test");
-        return mqProducer.publishMessage(msg).toString();
-    }
+//    @GetMapping("/mq")
+//    public String mq() throws UnsupportedEncodingException {
+//        TopicMessage msg = new TopicMessage();
+//        msg.setMessageTag("test");
+//        msg.setMessageBody("test");
+//        return mqProducer.publishMessage(msg).toString();
+//    }
 
     @GetMapping("/mail")
     public String mail() {

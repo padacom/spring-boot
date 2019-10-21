@@ -3,4 +3,4 @@ server:
 
 spring:
   profiles:
-    active: mysql,mq,mail,redis,solr
+    active: mysql,mail,redis,solr
