@@ -1,7 +1,7 @@
 custom:
   mq:
-    url: http://xxxxxxxxxxxx.xxxxxx.cn-xxxxx-xxxxx.aliyuncs.com
-    id: axxxxxxxxxxxxx
-    key: cdfxxxxxxxxxxxxxxxxxxxxxx
+    url: http://xxxxxxxxxxxx.xxxxxx.cn-xxxxx-xxxxx.aliyuncsxx.xxx
+    id: axxxxxxxxxxxxxxx
+    key: cdfxxxxxxxxxxxxxxxxxxxxxxxx
     topic: JXXXXXEEEEERRRRR-FFFEEEEE-DEV
     groupId: GXXXXX_FEESSSSS_XXXXXXXXXX_DEV
