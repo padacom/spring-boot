@@ -3,10 +3,12 @@ package com.zglu.api;
 import com.alibaba.fastjson.JSON;
 //import com.aliyun.mq.http.MQProducer;
 //import com.aliyun.mq.http.model.TopicMessage;
+import com.zglu.mongodao.UserMongo;
 import com.zglu.mysqldao.User;
 import com.zglu.mysqldao.UserRoleVo;
 import com.zglu.mysqldao.UserVo;
 import com.zglu.solrdao.UserSolr;
+import com.zglu.common.Result;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.redisson.api.RLock;
@@ -15,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 import java.io.UnsupportedEncodingException;
 import java.util.*;
@@ -32,6 +35,7 @@ public class TestController {
     private final UserSolrService userSolrService;
     private final RedisTemplate<String, Object> redisTemplate;
     private final RedissonClient redissonClient;
+    private final UserMongoService userMongoService;
 
     @GetMapping("/vo")
     public TestBaseVo vo() {
@@ -85,6 +89,15 @@ public class TestController {
     @GetMapping("/user-solr/{id}")
     public UserSolr userSolr(@PathVariable int id) {
         return userSolrService.get(id);
+    }
+
+    @PostMapping("/user-mongo")
+    public Result userMongo(@RequestParam(required = false) String id) {
+        Result result = new Result();
+        result.setStatus(200);
+        result.setMessage("ok");
+        result.setData(userMongoService.getUserMongo(id));
+        return result;
     }
 
     @PostMapping("/user-solr")
